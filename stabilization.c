@@ -3,7 +3,11 @@
 // [2] Yaw Z-Axis
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <time.h>
 
+float telemetry_data[3] = {0.0, 0.0, 0.0}; // Base telem data
 float prop_thrust_values[4] = {50.0, 50.0, 50.0, 50.0}; // Base 50% thrust
 
 void correct_forward_roll(float roll_amt) {
@@ -62,18 +66,43 @@ void handle_pitch(float pitch_amt) {
     }
 }
 
+void reset_thrust() {
+    for (int i=0; i<4; i++) {
+        prop_thrust_values[i] = 50.0;
+    }
+}
+
 void log_thrust() {
+    system("clear"); // "cls" on Windows
+    printf("X: %.3f Y: %.3f Z: %.3f\n\n", telemetry_data[0], telemetry_data[1], telemetry_data[2]);
     printf("%.3f %.3f\n%.3f %.3f\n", prop_thrust_values[0], prop_thrust_values[1], prop_thrust_values[2], prop_thrust_values[3]);
 }
 
-int main() {
-    float test_data[3] = {-2.1, 1.3, 0.0};
+float random_telemetry_data() { // TEMPORARY FOR TESTING
+    float random = (float)rand() / RAND_MAX;
+    return -10.0f + random * 20.0f;
+}
 
-    // TO-DO: read_sensor_data();
-    handle_roll(test_data[0]);
-    handle_pitch(test_data[1]);
-    // TO-DO: apply_thrust();
-    log_thrust();
+void read_sensor_data() {  // TEMPORARY FOR TESTING
+    for (int i = 0; i < 3; i++) {
+        telemetry_data[i] = random_telemetry_data();
+    }
+}
+
+int main() {
+    while (1) {
+        reset_thrust();
+
+        read_sensor_data();
+        handle_roll(telemetry_data[0]);
+        handle_pitch(telemetry_data[1]);
+
+        // TO-DO: apply_thrust();
+
+        log_thrust();
+
+        usleep(25000); // 25ms delay
+    }
 
     return 0;
 }
