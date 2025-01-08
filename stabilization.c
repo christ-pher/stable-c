@@ -7,8 +7,8 @@
 #include <unistd.h>
 #include <time.h>
 
-float telemetry_data[3] = {0.0, 0.0, 0.0}; // Base telem data
-float prop_thrust_values[4] = {50.0, 50.0, 50.0, 50.0}; // Base 50% thrust
+float telemetry_data[3] = {0.0, 0.0, 0.0};
+float prop_thrust_values[4] = {50.0, 50.0, 50.0, 50.0};
 
 void correct_forward_roll(float roll_amt) {
     // Increase front prop thrust by (roll_amt/2)%
@@ -91,17 +91,16 @@ void read_sensor_data() {  // TEMPORARY FOR TESTING
 
 int main() {
     while (1) {
-        reset_thrust();
-
         read_sensor_data();
         handle_roll(telemetry_data[0]);
         handle_pitch(telemetry_data[1]);
-
         // TO-DO: apply_thrust();
-
         log_thrust();
 
         usleep(25000); // 25ms delay
+        getchar(); // Waits for ENTER (for dev)
+
+        reset_thrust();
     }
 
     return 0;
