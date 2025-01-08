@@ -97,8 +97,8 @@ int main() {
         // TO-DO: apply_thrust();
         log_thrust();
 
-        usleep(25000); // 25ms delay
-        getchar(); // Waits for ENTER (for dev)
+        usleep(15625); // 64 tick
+        // getchar(); // Waits for ENTER (for dev)
 
         reset_thrust();
     }
