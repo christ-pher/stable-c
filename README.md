@@ -19,6 +19,10 @@
 - Width: 83.82mm
 - Diameter: 7.62mm
 
+<img src="https://github.com/user-attachments/assets/b7b8adf9-92e3-456e-ad80-53613dbd3c11" width="500">
+
+<img src="https://github.com/user-attachments/assets/da353d8a-3f58-4ec3-b5fb-60b81c1d858c" width="500">
+
 ## Demo
 In this demo you can see the LED changing from green to red when the board is on a tilt at any angle. Green indicates that the board is level within a margin of error, and the Red indicates that it has gone outside of that margin.
 > Adafruit Feather Sense nRF52840 running ***stabilization.ino***
