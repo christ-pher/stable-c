@@ -1,13 +1,13 @@
 #include <Adafruit_LSM6DS3TRC.h>
 #include <Adafruit_LIS3MDL.h>
+#include <Adafruit_NeoPixel.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_AHRS.h>
-#include <Adafruit_NeoPixel.h>
 
 Adafruit_LSM6DS3TRC lsm6ds3trc; // Accel. & Gyro
 Adafruit_LIS3MDL lis3mdl; // Magnetometer
-Adafruit_Madgwick filter; // Filter
 Adafruit_NeoPixel onePixel; // Status light
+Adafruit_NXPSensorFusion filter; // Filter
 
 unsigned long timestamp;
 
