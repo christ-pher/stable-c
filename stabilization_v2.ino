@@ -67,10 +67,10 @@ void set_status_light() {
 
 // ----- System Setup -----
 void setup() {
-    onePixel.begin();             // Start the NeoPixel object
-    onePixel.clear();             // Set NeoPixel color to black (0,0,0)
-    onePixel.setBrightness(20);   // Affects all subsequent settings
-    onePixel.show();              // Update the pixel state
+    onePixel.begin();
+    onePixel.clear();
+    onePixel.setBrightness(20);
+    onePixel.show();
 
     if (!lsm6ds3trc.begin_I2C()) {
         onePixel.setPixelColor(0, 200, 100, 0);
