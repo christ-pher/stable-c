@@ -97,11 +97,8 @@ void loop() {
                   accel.acceleration.x, accel.acceleration.y, accel.acceleration.z,
                   mag.magnetic.x, mag.magnetic.y, mag.magnetic.z);
 
-    float roll = filter.getRoll();
-    float pitch = filter.getPitch();
-
-    handle_roll(roll);
-    handle_pitch(pitch);
+    handle_roll(filter.getRoll());
+    handle_pitch(filter.getPitch());
 
     set_status_light();
 
